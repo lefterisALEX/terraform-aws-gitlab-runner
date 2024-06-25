@@ -682,6 +682,7 @@ variable "runner_worker_docker_machine_instance" {
     volume_type = The type of volume to use for the Runner Worker. `gp2`, `gp3`, `io1` or `io2` are supported.
     volume_throughput = Throughput in MB/s for the volume. Only supported when using `gp3` as `volume_type`.
     volume_iops = Guaranteed IOPS for the volume. Only supported when using `gp3`, `io1` or `io2` as `volume_type`.
+    encrypted = Enables EBS encryption on the root volume.
   EOT
   type = object({
     destroy_after_max_builds   = optional(number, 0)
@@ -700,6 +701,7 @@ variable "runner_worker_docker_machine_instance" {
     volume_type                = optional(string, "gp2")
     volume_throughput          = optional(number, 125)
     volume_iops                = optional(number, 3000)
+    encrypted                  = optional(bool, true)
   })
   default = {
   }
